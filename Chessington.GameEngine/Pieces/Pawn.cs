@@ -18,15 +18,19 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!flaghasmove)
                 {
-                    if (board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col)) == null && board.GetPiece(new Square(currentsquare.Row - 2, currentsquare.Col)) == null)
+                    if (board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col)) == null && board.GetPiece(new Square(currentsquare.Row - 2, currentsquare.Col)) == null && currentsquare.Row - 2 > -1)
                     {
                         moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
                         moves.Add(new Square(currentsquare.Row - 2, currentsquare.Col));
                     }
+                    else if (board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col)) == null && currentsquare.Row - 1 > -1)
+                    {
+                        moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
+                    }
                 }
                 else
                 {
-                    if (board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col)) == null)
+                    if (board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col)) == null && currentsquare.Row - 1 > -1)
                     {
                         moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
                     }
@@ -37,15 +41,19 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!flaghasmove)
                 {
-                    if (board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col)) == null && board.GetPiece(new Square(currentsquare.Row + 2, currentsquare.Col)) == null)
+                    if (board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col)) == null && board.GetPiece(new Square(currentsquare.Row + 2, currentsquare.Col)) == null && currentsquare.Row + 2 < 8)
                     {
                         moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col));
                         moves.Add(new Square(currentsquare.Row + 2, currentsquare.Col));
                     }
+                    else if (board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col)) == null && currentsquare.Row + 1 < 8)
+                    {
+                        moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
+                    }
                 }
                 else
                 {
-                    if (board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col)) == null)
+                    if (board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col)) == null && currentsquare.Row + 1 < 8)
                     {
                         moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col));
                     }

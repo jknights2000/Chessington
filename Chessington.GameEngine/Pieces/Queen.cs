@@ -12,8 +12,8 @@ namespace Chessington.GameEngine.Pieces
         {
             var currentsquare = board.FindPiece(this);
             List<Square> moves = new List<Square>();
-            moves = getDiagnoal(moves, currentsquare);
-            moves = getLaterally(moves, currentsquare);
+            moves = getDiagnoal(moves, currentsquare,board);
+            moves = getLaterally(moves, currentsquare,board);
             return moves;
         }
     }

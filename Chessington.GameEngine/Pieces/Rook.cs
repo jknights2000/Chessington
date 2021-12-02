@@ -12,7 +12,7 @@ namespace Chessington.GameEngine.Pieces
         {
             var currentsquare = board.FindPiece(this);
             List<Square> moves = new List<Square>();
-            moves = getLaterally(moves, currentsquare);
+            moves = getLaterally(moves, currentsquare,board);
             return moves;
         }
     }

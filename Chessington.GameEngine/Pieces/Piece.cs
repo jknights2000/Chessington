@@ -22,36 +22,79 @@ namespace Chessington.GameEngine.Pieces
             board.MovePiece(currentSquare, newSquare);
             flaghasmove = true;
         }
-        public List<Square> getDiagnoal(List<Square> moves, Square currentsquare)
+        public List<Square> getDiagnoal(List<Square> moves, Square currentsquare,Board board)
         {
             int max = 8;
             int min = -1;
             for (int col = currentsquare.Col + 1, row = currentsquare.Row + 1; col < max && row < max; row++, col++)
             {
+                if(board.GetPiece(new Square(row, col)) != null)
+                {
+                    break;
+                }
                 moves.Add(new Square(row, col));
             }
             for (int col = currentsquare.Col - 1, row = currentsquare.Row + 1; col > min && row < max; row++, col--)
             {
+                if (board.GetPiece(new Square(row, col)) != null)
+                {
+                    break;
+                }
                 moves.Add(new Square(row, col));
             }
             for (int col = currentsquare.Col - 1, row = currentsquare.Row - 1; col > min && row > min; row--, col--)
             {
+                if (board.GetPiece(new Square(row, col)) != null)
+                {
+                    break;
+                }
                 moves.Add(new Square(row, col));
             }
             for (int col = currentsquare.Col + 1, row = currentsquare.Row - 1; col < max && row > min; row--, col++)
             {
+                if (board.GetPiece(new Square(row, col)) != null)
+                {
+                    break;
+                }
                 moves.Add(new Square(row, col));
             }
             return moves;
         }
-        public List<Square> getLaterally(List<Square> moves, Square currentsquare)
+        public List<Square> getLaterally(List<Square> moves, Square currentsquare,Board board)
         {
+            int xstart = 0;
+            int xend = 8;
+            int ystart = 0;
+            int yend = 8;
             for (var i = 0; i < 8; i++)
             {
-                moves.Add(Square.At(currentsquare.Row, i));
-                moves.Add(Square.At(i, currentsquare.Col));
+                if(i < currentsquare.Row && board.GetPiece(new Square(currentsquare.Row, i)) != null && xstart < i)
+                {
+                    xstart = i;
+                }
+                else if (i > currentsquare.Row && board.GetPiece(new Square(currentsquare.Row, i)) != null && xend > i)
+                {
+
+                    xend = i;
+                }
+                if (i < currentsquare.Col && board.GetPiece(new Square(i, currentsquare.Col)) != null && ystart < i)
+                {
+                    ystart = i;
+                }
+                else if (i > currentsquare.Col && board.GetPiece(new Square(i, currentsquare.Col)) != null && yend > i)
+                {
+
+                    yend = i;
+                }
 
             }
+
+            for (var i = xstart; i < xend; i++)
+                moves.Add(Square.At(currentsquare.Row, i));
+
+            for (var i = ystart; i < yend; i++)
+                moves.Add(Square.At(i, currentsquare.Col));
+
             moves.RemoveAll(s => s == Square.At(currentsquare.Row, currentsquare.Col));
             return moves;
         }
