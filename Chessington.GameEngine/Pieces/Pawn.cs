@@ -18,7 +18,7 @@ namespace Chessington.GameEngine.Pieces
       
             if(this.Player == Player.White)
             {
-                if (currentsquare.Row == whitestart)
+                if (currentsquare.Row >= whitestart)
                 {
                     moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
                     moves.Add(new Square(currentsquare.Row - 2, currentsquare.Col));
@@ -31,7 +31,7 @@ namespace Chessington.GameEngine.Pieces
             }
             else
             {
-                if (currentsquare.Row == blackstart)
+                if (currentsquare.Row <= blackstart)
                 {
                     moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col));
                     moves.Add(new Square(currentsquare.Row + 2, currentsquare.Col));
