@@ -169,7 +169,7 @@ namespace Chessington.GameEngine.Pieces
             moves.RemoveAll(s => s == Square.At(currentsquare.Row, currentsquare.Col));
             return moves;
         }
-        public List<Square> applyoffset(List<Square> moves,Square currentsquare, int[,] offset)
+        public List<Square> applyoffset(Piece current,List<Square> moves,Square currentsquare, int[,] offset,Board board)
         {
             int max = 8;
             int min = -1;
@@ -177,7 +177,14 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (currentsquare.Row + offset[i, 0] < max && currentsquare.Row + offset[i, 0] > min && currentsquare.Row + offset[i, 1] < max && currentsquare.Row + offset[i, 1] > min)
                 {
-                    moves.Add(new Square(currentsquare.Row + offset[i, 0], currentsquare.Col + offset[i, 1]));
+                   if(board.GetPiece(new Square(currentsquare.Row + offset[i, 0], currentsquare.Col + offset[i, 1])) == null)
+                    {
+                                moves.Add(new Square(currentsquare.Row + offset[i, 0], currentsquare.Col + offset[i, 1]));
+                    }
+                    else if (board.GetPiece(new Square(currentsquare.Row + offset[i, 0], currentsquare.Col + offset[i, 1])).Player != current.Player)
+                    {
+                        moves.Add(new Square(currentsquare.Row + offset[i, 0], currentsquare.Col + offset[i, 1]));
+                    }
                 }
             }
             return moves;

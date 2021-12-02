@@ -24,7 +24,7 @@ namespace Chessington.GameEngine.Pieces
                 {1,-1}
 
             };
-            return applyoffset(moves,currentsquare,offset);
+            return applyoffset(this,moves,currentsquare,offset,board);
         }
     }
 }
