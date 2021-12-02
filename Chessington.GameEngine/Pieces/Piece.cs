@@ -22,7 +22,7 @@ namespace Chessington.GameEngine.Pieces
             board.MovePiece(currentSquare, newSquare);
             flaghasmove = true;
         }
-        public List<Square> getDiagnoal(List<Square> moves, Square currentsquare,Board board)
+        public List<Square> getDiagnoal(Piece current,List<Square> moves, Square currentsquare,Board board)
         {
             int max = 8;
             int min = -1;
@@ -30,6 +30,10 @@ namespace Chessington.GameEngine.Pieces
             {
                 if(board.GetPiece(new Square(row, col)) != null)
                 {
+                    if (board.GetPiece(new Square(row, col)).Player != current.Player)
+                    {
+                        moves.Add(new Square(row, col));
+                    }
                     break;
                 }
                 moves.Add(new Square(row, col));
@@ -38,6 +42,10 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (board.GetPiece(new Square(row, col)) != null)
                 {
+                    if (board.GetPiece(new Square(row, col)).Player != current.Player)
+                    {
+                        moves.Add(new Square(row, col));
+                    }
                     break;
                 }
                 moves.Add(new Square(row, col));
@@ -46,6 +54,10 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (board.GetPiece(new Square(row, col)) != null)
                 {
+                    if (board.GetPiece(new Square(row, col)).Player != current.Player)
+                    {
+                        moves.Add(new Square(row, col));
+                    }
                     break;
                 }
                 moves.Add(new Square(row, col));
@@ -54,6 +66,10 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (board.GetPiece(new Square(row, col)) != null)
                 {
+                    if(board.GetPiece(new Square(row, col)).Player != current.Player)
+                    {
+                        moves.Add(new Square(row, col));
+                    }
                     break;
                 }
                 moves.Add(new Square(row, col));
