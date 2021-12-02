@@ -10,6 +10,7 @@ namespace Chessington.GameEngine.Pieces
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
+            
             var currentsquare = board.FindPiece(this);
             List<Square> moves = new List<Square>();
       
@@ -17,12 +18,18 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!flaghasmove)
                 {
-                    moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
-                    moves.Add(new Square(currentsquare.Row - 2, currentsquare.Col));
+                    if (board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col)) == null && board.GetPiece(new Square(currentsquare.Row - 2, currentsquare.Col)) == null)
+                    {
+                        moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
+                        moves.Add(new Square(currentsquare.Row - 2, currentsquare.Col));
+                    }
                 }
                 else
                 {
-                    moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
+                    if (board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col)) == null)
+                    {
+                        moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
+                    }
                 }
                 
             }
@@ -30,12 +37,18 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!flaghasmove)
                 {
-                    moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col));
-                    moves.Add(new Square(currentsquare.Row + 2, currentsquare.Col));
+                    if (board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col)) == null && board.GetPiece(new Square(currentsquare.Row + 2, currentsquare.Col)) == null)
+                    {
+                        moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col));
+                        moves.Add(new Square(currentsquare.Row + 2, currentsquare.Col));
+                    }
                 }
                 else
                 {
-                    moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col));
+                    if (board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col)) == null)
+                    {
+                        moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col));
+                    }
                 }
             }
             return moves;
