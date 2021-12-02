@@ -37,6 +37,14 @@ namespace Chessington.GameEngine.Pieces
                             moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col));
                         }
                     }
+                    if (currentsquare.Col > 0 && board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col - 1)) != null && board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col - 1)).Player != this.Player)
+                    {
+                        moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col - 1));
+                    }
+                    if (currentsquare.Col < 7 && board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col + 1)) != null && board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col + 1)).Player != this.Player)
+                    {
+                        moves.Add(new Square(currentsquare.Row - 1, currentsquare.Col + 1));
+                    }
                 }
                 
             }
@@ -62,6 +70,14 @@ namespace Chessington.GameEngine.Pieces
                         {
                             moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col));
                         }
+                    }
+                    if(currentsquare.Col != 7 && board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col+1)) != null && board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col + 1)).Player != this.Player)
+                    {
+                        moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col + 1));
+                    }
+                    if (currentsquare.Col != 0 && board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col - 1)) != null && board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col + 1)).Player != this.Player)
+                    {
+                        moves.Add(new Square(currentsquare.Row + 1, currentsquare.Col - 1));
                     }
                 }
             }
