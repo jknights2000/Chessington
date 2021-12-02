@@ -15,6 +15,6 @@ namespace Chessington.GameEngine.Pieces
             moves = getDiagnoal(moves, currentsquare,board);
             moves = getLaterally(moves, currentsquare,board);
             return moves;
-        }
+        }//works
     }
 }
