@@ -185,7 +185,6 @@ namespace Chessington.GameEngine.Tests.Pieces
             moves.Should().NotContain(Square.At(6, 2));
             moves.Should().NotContain(Square.At(6, 4));
         }
-
         [Test]
         public void WhitePawns_CannotMoveDiagonally_IfThereIsNoPieceToTake()
         {

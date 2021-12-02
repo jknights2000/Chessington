@@ -13,14 +13,14 @@ namespace Chessington.GameEngine.Pieces
 
         public Player Player { get; private set; }
 
-        public bool flaghasmove { get; set; }
+        public bool HasMove{ get; set; }
         public abstract IEnumerable<Square> GetAvailableMoves(Board board);
 
         public void MoveTo(Board board, Square newSquare)
         {
             var currentSquare = board.FindPiece(this);
             board.MovePiece(currentSquare, newSquare);
-            flaghasmove = true;
+            HasMove = true;
         }
         public List<Square> getDiagnoal(Piece current,List<Square> moves, Square currentsquare,Board board)
         {

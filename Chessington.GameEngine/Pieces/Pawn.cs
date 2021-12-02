@@ -18,7 +18,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if(currentsquare.Row != 0)
                 {
-                    if (!flaghasmove)
+                    if (!HasMove)
                     {
                         if (board.GetPiece(new Square(currentsquare.Row - 1, currentsquare.Col)) == null && board.GetPiece(new Square(currentsquare.Row - 2, currentsquare.Col)) == null && currentsquare.Row - 2 > 0)
                         {
@@ -52,7 +52,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (currentsquare.Row != 7)
                 {
-                    if (!flaghasmove)
+                    if (!HasMove)
                     {
                         if (board.GetPiece(new Square(currentsquare.Row + 1, currentsquare.Col)) == null && board.GetPiece(new Square(currentsquare.Row + 2, currentsquare.Col)) == null && currentsquare.Row + 2 < 8)
                         {
