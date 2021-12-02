@@ -60,7 +60,7 @@ namespace Chessington.GameEngine.Pieces
             }
             return moves;
         }
-        public List<Square> getLaterally(List<Square> moves, Square currentsquare,Board board)
+        public List<Square> getLaterally(Piece current,List<Square> moves, Square currentsquare,Board board)
         {
             int xstart = 0;
             int xend = 8;
@@ -70,21 +70,76 @@ namespace Chessington.GameEngine.Pieces
             {
                 if(i < currentsquare.Row && board.GetPiece(new Square(currentsquare.Row, i)) != null && xstart < i)
                 {
-                    xstart = i;
+                    if (board.GetPiece(new Square(currentsquare.Row, i)).Player == current.Player)
+                    {
+                        xstart = i;
+                    }
+                    else
+                    {
+                        if(i == 0)
+                        {
+                            xstart = 0;
+                        }
+                        else
+                        {
+                            xstart = i - 1;
+                        }
+                    }
                 }
                 else if (i > currentsquare.Row && board.GetPiece(new Square(currentsquare.Row, i)) != null && xend > i)
                 {
 
-                    xend = i;
+                    if (board.GetPiece(new Square(currentsquare.Row, i)).Player == current.Player)
+                    {
+                        xend = i;
+                    }
+                    else
+                    {
+                        if (i == 7)
+                        {
+                            xend = 7;
+                        }
+                        else
+                        {
+                            xend = i + 1;
+                        }
+                    }
                 }
                 if (i < currentsquare.Col && board.GetPiece(new Square(i, currentsquare.Col)) != null && ystart < i)
                 {
-                    ystart = i;
+                    if (board.GetPiece(new Square(i, currentsquare.Col)).Player == current.Player)
+                    {
+                        ystart = i;
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                            ystart = 0;
+                        }
+                        else
+                        {
+                            ystart = i - 1;
+                        }
+                    }
                 }
                 else if (i > currentsquare.Col && board.GetPiece(new Square(i, currentsquare.Col)) != null && yend > i)
                 {
-
-                    yend = i;
+                    if (board.GetPiece(new Square(i, currentsquare.Col)).Player == current.Player)
+                    {
+                        ystart = i;
+                    }
+                    else
+                    {
+                        if (i == 7)
+                        {
+                            yend = 7;
+                        }
+                        else
+                        {
+                            yend = i + 1;
+                        }
+                    }
                 }
 
             }
