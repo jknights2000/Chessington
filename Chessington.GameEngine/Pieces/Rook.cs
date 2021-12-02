@@ -17,7 +17,7 @@ namespace Chessington.GameEngine.Pieces
 
             for (var i = 0; i < 8; i++)
                 moves.Add(Square.At(i, currentsquare.Col));
-            
+            moves.RemoveAll(s => s == Square.At(currentsquare.Row, currentsquare.Col));
             return moves;
         }
     }
